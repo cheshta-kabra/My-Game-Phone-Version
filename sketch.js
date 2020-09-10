@@ -78,8 +78,9 @@ function draw(){
         text("Press Left and Right arrow keys to move the slider",3,300);
         helicopter.visible=false;
         slider.visible=false;
-        if(keyDown("space")){
+        if(keyDown("space")||touches.length>0 ){
             gameState="play";
+            touches=[];
         }
     }
     else if (gameState === "play"){
@@ -251,7 +252,7 @@ function draw(){
     }
     //console.log(gameState)
 }
-function keyPressed(){
+/*function keyPressed(){
     if(keyIsDown(LEFT_ARROW)){
         slider.x-=getVelocity();
         //console.log(slider.x)
@@ -260,7 +261,7 @@ function keyPressed(){
         slider.x+=getVelocity();
        // console.log("right"+slider.x)
     }
-}
+}*/
 function spawnGift(){
     //console.log("spawnGift")
        var gift= createSprite(helicopter.x,65);
@@ -272,7 +273,7 @@ function spawnGift(){
         GroupGift.add(gift)
         
 }
-function getVelocity(){
+/*function getVelocity(){
     if (score<1500){
         return 45;
     }
@@ -288,7 +289,7 @@ function getVelocity(){
     else {
         return 65;
     }
-}
+}*/
 
 
 function touchStarted(){
