@@ -34,7 +34,7 @@ function preload(){
 }
     
 function setup(){
-    createCanvas(700,700);
+    createCanvas(900,1100);
     edges=createEdgeSprites();
 
     ground= createSprite(width/2,height/2,width,height)
@@ -44,7 +44,7 @@ function setup(){
     ground.addImage("noonBG",background_1);
     ground.addImage("eveningBG",background_2);
     ground.addImage("nightBG",background_3);
-    ground.scale=2
+    ground.scale=3
     
    
     
@@ -52,10 +52,10 @@ function setup(){
     helicopter= createSprite(120,60)
     helicopter.addImage("helicopterforward",helicopterImg);
     helicopter.addImage("helicopterbackward",helicopterImg2);
-    helicopter.scale=0.25;
+    helicopter.scale=0.47;
     helicopter.velocityX=3;
 
-    slider = createSprite(width,height-15,150,20)
+    slider = createSprite(width,height-25,150,20)
     slider.addImage("S1",slider_1);
     slider.addImage("S2",slider_2);
     slider.scale=0.50;
@@ -160,11 +160,11 @@ function draw(){
        if(score>=1500){
         ground.changeImage("noonBG",background_1);
         GroupGift.setVelocityYEach(3.8);
-        ground.scale=1;
+        ground.scale=2;
     }
     if(score>=3000){
         ground.changeImage("eveningBG",background_2);
-        ground.scale=2.9;
+        ground.scale=4.3;
         GroupGift.setVelocityYEach(4.5);
 
         frequency=Math.round(random(40,80))
@@ -177,7 +177,7 @@ function draw(){
     if(score>=4500){
         ground.changeImage("nightBG",background_3);
         GroupGift.setVelocityYEach(5);
-        ground.scale=2;
+        ground.scale=3;
 
         frequency=Math.round(random(70,120))
         if(frameCount % frequency === 0){
@@ -190,7 +190,7 @@ function draw(){
             //console.log(score)
             ground.changeImage("playBG",backgroundImg);
             GroupGift.setVelocityYEach(6.5);
-            //ground.scale=1;
+            ground.scale=3;
     
             frequency=Math.round(random(100,150))
             if(frameCount % frequency === 0){
@@ -213,13 +213,13 @@ function draw(){
 }
    else if( gameState === "end"){
        ground.changeImage("endBG",endBackground);
-       ground.scale=0.75;
+       ground.scale=1;
 
        stroke("white"); 
        fill("blue");
        strokeWeight(5);
        textSize(30);
-       text("Press 'R' to restart the game ",100,100);
+       text("Press anywhere on the game screen to restart the game",100,100);
        
       
        helicopter.visible=false;
@@ -229,9 +229,10 @@ function draw(){
 
        
    }
-   if(keyDown("r")){
+   if(keyDown("r")|| touches.length>0){
        ground.changeImage("serveBG",serveBackground)  
        gameState="serve";
+       ground.scale=3
        helicopter.x=120;
        slider.x=width/2;
        GroupGift.destroyEach();
@@ -240,7 +241,7 @@ function draw(){
        helicopter.changeImage("helicopterforward",helicopterImg) ;
        //helicopter.velocityX=3
        resetFlag=true;
-
+       touches=[];
 }
 
     if(gameState !== "serve"){
@@ -267,7 +268,7 @@ function spawnGift(){
     //console.log("spawnGift")
        var gift= createSprite(helicopter.x,65);
         gift.addImage(giftImg);
-        gift.scale=0.1;
+        gift.scale=0.2;
         //var rand=Math.round(random(1,3))
         gift.velocityY=3;
         gift.lifeTime=height/3+20
