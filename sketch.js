@@ -34,7 +34,7 @@ function preload(){
 }
     
 function setup(){
-    createCanvas(500,500);
+    createCanvas(700,700);
     edges=createEdgeSprites();
 
     ground= createSprite(width/2,height/2,width,height)
@@ -58,7 +58,7 @@ function setup(){
     slider = createSprite(width,height-15,150,20)
     slider.addImage("S1",slider_1);
     slider.addImage("S2",slider_2);
-    slider.scale=0.25;
+    slider.scale=0.50;
 
     //slider.shapeColor="red";
     GroupGift=new Group()
@@ -73,9 +73,10 @@ function draw(){
     fill("red");
     strokeWeight(10);
     textSize(20);
-        text("WELCOME",width/2-50,height/2-50);
-        text("Press SPACE to start the game",100,350);
-        text("Press Left and Right arrow keys to move the slider",3,300);
+        text("WELCOME",270,350);
+        text("touch anywhere on the game screen to start the game",100,580);
+        text("Press on Left side to move left  (on the game scren)",5,500);
+        text("Press on right side to move right  (on the game scren)",5,540);
         helicopter.visible=false;
         slider.visible=false;
         if(keyDown("space")||touches.length>0 ){
@@ -163,7 +164,7 @@ function draw(){
     }
     if(score>=3000){
         ground.changeImage("eveningBG",background_2);
-        ground.scale=2;
+        ground.scale=2.9;
         GroupGift.setVelocityYEach(4.5);
 
         frequency=Math.round(random(40,80))
@@ -176,7 +177,7 @@ function draw(){
     if(score>=4500){
         ground.changeImage("nightBG",background_3);
         GroupGift.setVelocityYEach(5);
-        ground.scale=1.6;
+        ground.scale=2;
 
         frequency=Math.round(random(70,120))
         if(frameCount % frequency === 0){
