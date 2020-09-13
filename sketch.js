@@ -66,7 +66,6 @@ function setup(){
 }
 
 function draw(){
-    
     background("black");
     drawSprites();
     console.log(gameState)
@@ -231,7 +230,7 @@ function draw(){
 
        
    }
-   if(keyDown("r")|| touches.length>0){
+   if((keyDown("r")|| touches.length>0)&& gameState==="end"){
        ground.changeImage("serveBG",serveBackground)  
        gameState="serve";
        ground.scale=3
@@ -305,7 +304,7 @@ function touchStarted(){
     //stroke(255, 0, 0);
     //line(touchX, touchY, ptouchX, ptouchY);
     
-    console.log("touchmoved mouse",mouseX) 
+    //console.log("touchmoved mouse",mouseX) 
     slider.x = mouseX
     //slider.y = mouseY
     return false;
@@ -315,8 +314,8 @@ function touchStarted(){
     //stroke(0, 0, 255);
     //line(touchX, touchY, ptouchX, ptouchY);
    
-    console.log("touchEnded touch",touchX)
-    console.log("touchend",mouseX)
+    //console.log("touchEnded touch",touchX)
+    //console.log("touchend",mouseX)
     slider.x = mouseX
     //slider.y = mouseY
     return false;
