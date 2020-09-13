@@ -66,8 +66,10 @@ function setup(){
 }
 
 function draw(){
+    
     background("black");
     drawSprites();
+    console.log(gameState)
     if(gameState === "serve"){
         stroke("black");
     fill("red");
